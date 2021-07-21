@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneralMaintenance.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="OilChange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
