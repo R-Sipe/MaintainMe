@@ -187,7 +187,7 @@ namespace MaintainMeMVC.Controllers
         }
 
         //
-        // GET: /Account/ForgotPassword
+        // GET: /Account/ForgotPass
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
