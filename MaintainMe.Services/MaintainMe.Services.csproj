@@ -61,5 +61,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MaintainMe.Data\MaintainMe.Data.csproj">
+      <Project>{3A70C131-58FA-4852-BA80-63ADEA767B69}</Project>
+      <Name>MaintainMe.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MaintainMe.Models\MaintainMe.Models.csproj">
+      <Project>{5F162175-6691-4FC5-AC5F-62D0B715C78D}</Project>
+      <Name>MaintainMe.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
