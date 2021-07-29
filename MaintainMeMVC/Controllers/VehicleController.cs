@@ -34,10 +34,10 @@ namespace MaintainMeMVC.Controllers
 
             if (service.CreateVehicle(create))
             {
-                TempData["SaveResult"] = "The order has been created.";
+                TempData["SaveResult"] = "The vehicle has been created.";
                 return RedirectToAction("Index");
             };
-            ModelState.AddModelError("", "The order could not be created");
+            ModelState.AddModelError("", "The vehicle could not be created");
             return View(create);
         }
 
