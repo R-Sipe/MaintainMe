@@ -41,6 +41,14 @@ namespace MaintainMeMVC.Controllers
             return View(create);
         }
 
+        public ActionResult Details(int id)
+        {
+            var svc = CreateVehicleService();
+            var model = svc.GetVehicleById(id);
+
+            return View(model);
+        }
+
         private VehicleService CreateVehicleService()
         {
             var vehicleService = new VehicleService();
