@@ -54,8 +54,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneralMaintenance.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="OilChange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vehicle.cs" />
+    <Compile Include="VehicleBrake.cs" />
+    <Compile Include="VehicleFilter.cs" />
+    <Compile Include="VehicleTire.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
