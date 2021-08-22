@@ -5,15 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaintainMe.Data
+namespace MaintainMe.Models.VehicleBrakeModel
 {
-    public class VehicleBrake
+    public class VehicleBrakeCreate
     {
-        [Key]
-        public int VehicleId { get; set; }
+        [Required]
         public string BrakePart { get; set; }
+        
+        [Required]
         public string ServicedBy { get; set; }
-        public DateTime DateOFService { get; set; }
+        
+        [Required]
         public int MilageServiced { get; set; }
+
+        [Required]
+        public DateTime DateOFService { get; set; }
+
     }
 }
