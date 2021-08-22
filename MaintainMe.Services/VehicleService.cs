@@ -39,6 +39,7 @@ namespace MaintainMe.Services
                         e =>
                         new VehicleListItem
                         {
+                            Id = e.Id,
                             Make = e.Make,
                             Model = e.Model,
                             Year = e.Year
@@ -64,6 +65,35 @@ namespace MaintainMe.Services
                         Year = entity.Year,
                         Type = entity.Type
                     };
+            }
+        }
+
+        public bool UpdateVehicle(VehicleEdit edit)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Vehicles
+                    .Single(e => e.Id == edit.Id);
+
+                entity.Make = edit.Make;
+                entity.Model = edit.Model;
+                entity.Year = edit.Year;
+                entity.Type = edit.Type;
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteVehicle(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx.Vehicles
+                    .Single(e => e.Id == id);
+                ctx.Vehicles.Remove(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
     }

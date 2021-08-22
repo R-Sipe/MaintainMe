@@ -49,6 +49,64 @@ namespace MaintainMeMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateVehicleService().GetVehicleById(id);
+            var model =
+                new VehicleEdit
+                {
+                    Make = service.Make,
+                    Model = service.Model,
+                    Year = service.Year,
+                    Type = service.Type
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, VehicleEdit edit)
+        {
+            if (!ModelState.IsValid) return View(edit);
+
+            if(edit.Id != id)
+            {
+                ModelState.AddModelError("", "Id does not match");
+                return View(edit);
+            }
+
+            var service = CreateVehicleService();
+            //DO AFTER SERVICE
+            if (service.UpdateVehicle(edit))
+            {
+                TempData["SaveResult"] = "The Vehicle was updated.";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "The Vehicle could not be updated, try again in a few seconds.");
+            return View(edit);
+        }
+
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateVehicleService().GetVehicleById(id);
+            return View(svc);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteById(int id)
+        {
+            var service = CreateVehicleService();
+            service.DeleteVehicle(id);
+
+            TempData["SaveResult"] = "The vehicle was removed.";
+            return RedirectToAction("Index");
+        }
+
+
+
         private VehicleService CreateVehicleService()
         {
             var vehicleService = new VehicleService();
